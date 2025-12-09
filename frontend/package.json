@@ -1,7 +1,7 @@
 {
   "name": "frontend",
   "private": true,
-  "homepage": "https://Rayza-Souto.github.io/Deposito-Digital",
+  "homepage": "https://rayza-souto.github.io/Deposito-Digital",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
