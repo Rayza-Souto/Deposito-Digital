@@ -1,0 +1,110 @@
+import React, { useContext } from 'react';
+import { X, Trash2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { CartContext } from '../App.jsx';
+
+function CartSidebar({ open, onClose }) {
+  const { cartItems, updateQty, clearCart, cartTotal } =
+    useContext(CartContext);
+
+  return (
+    <div
+      className={`fixed inset-y-0 right-0 z-40 w-80 transform bg-white shadow-lg transition-transform ${
+        open ? 'translate-x-0' : 'translate-x-full'
+      }`}
+    >
+      <div className="flex items-center justify-between border-b px-4 py-3">
+        <h3 className="text-sm font-semibold uppercase">
+          Meu carrinho ({cartItems.length})
+        </h3>
+        <button onClick={onClose}>
+          <X className="h-4 w-4 text-gray-500" />
+        </button>
+      </div>
+      <div className="flex h-full flex-col">
+        <div className="flex-1 overflow-y-auto px-4 py-3">
+          {cartItems.length === 0 ? (
+            <p className="text-sm text-gray-500">
+              Seu carrinho está vazio.
+            </p>
+          ) : (
+            <ul className="space-y-3">
+              {cartItems.map(item => (
+                <li
+                  key={item.id}
+                  className="flex items-start gap-3 border-b pb-3"
+                >
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="h-12 w-12 rounded object-cover"
+                  />
+                  <div className="flex flex-1 flex-col">
+                    <span className="text-xs font-semibold text-gray-800">
+                      {item.name}
+                    </span>
+                    <span className="text-[11px] text-gray-500">
+                      {item.unit}
+                    </span>
+                    <div className="mt-1 flex items-center justify-between">
+                      <div className="text-sm font-bold text-primary">
+                        R$ {(item.price * item.qty).toFixed(2)}
+                      </div>
+                      <div className="flex items-center gap-1 text-xs">
+                        <button
+                          className="h-5 w-5 rounded border text-center"
+                          onClick={() =>
+                            updateQty(item.id, item.qty - 1)
+                          }
+                        >
+                          -
+                        </button>
+                        <span className="w-6 text-center">
+                          {item.qty}
+                        </span>
+                        <button
+                          className="h-5 w-5 rounded border text-center"
+                          onClick={() =>
+                            updateQty(item.id, item.qty + 1)
+                          }
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+        <div className="border-t px-4 py-3 text-sm">
+          <div className="flex items-center justify-between">
+            <span>Total:</span>
+            <span className="text-lg font-bold text-primary">
+              R$ {cartTotal.toFixed(2)}
+            </span>
+          </div>
+          <div className="mt-3 flex flex-col gap-2">
+            <Link
+              to="/carrinho"
+              onClick={onClose}
+              className="block rounded bg-primary px-3 py-2 text-center text-sm font-semibold text-white hover:bg-primaryDark"
+            >
+              Finalizar compra
+            </Link>
+            <button
+              onClick={clearCart}
+              className="flex items-center justify-center gap-1 text-xs text-gray-500 hover:text-red-500"
+            >
+              <Trash2 className="h-3 w-3" />
+              Esvaziar carrinho
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default CartSidebar;
