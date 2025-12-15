@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { CartContext } from '../App.jsx';
+import { CartContext } from '../pages/CartContext.jsx';
 import Breadcrumb from '../components/Breadcrumb.jsx';
 
 function PaymentPage() {
