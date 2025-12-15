@@ -1,7 +1,5 @@
-// src/App.jsx
-import React from 'react';
+import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { CartProvider } from './pages/CartContext.jsx';
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
 import CartSidebar from './components/CartSidebar.jsx';
@@ -12,17 +10,58 @@ import CartPage from './pages/CartPage.jsx';
 import About from './pages/About.jsx';
 import Stores from './pages/Stores.jsx';
 import Contact from './pages/Contact.jsx';
-import PaymentPage from './pages/PaymentPage.jsx';
+
+
+export const CartContext = React.createContext();
 
 function App() {
+  const [cartOpen, setCartOpen] = useState(false);
+  const [cartItems, setCartItems] = useState([]);
+
+  const addToCart = (product, qty = 1) => {
+    setCartItems(prev => {
+      const existing = prev.find(item => item.id === product.id);
+      if (existing) {
+        return prev.map(item =>
+          item.id === product.id
+            ? { ...item, qty: item.qty + qty }
+            : item
+        );
+      }
+      return [...prev, { ...product, qty }];
+    });
+    setCartOpen(true);
+  };
+
+  const updateQty = (id, qty) => {
+    if (qty <= 0) {
+      setCartItems(prev => prev.filter(item => item.id !== id));
+    } else {
+      setCartItems(prev =>
+        prev.map(item => (item.id === id ? { ...item, qty } : item))
+      );
+    }
+  };
+
+  const clearCart = () => setCartItems([]);
+
+  const cartTotal = cartItems.reduce(
+    (sum, item) => sum + item.price * item.qty,
+    0
+  );
+
+  const contextValue = {
+    cartItems,
+    addToCart,
+    updateQty,
+    clearCart,
+    cartTotal
+  };
+
   return (
-    <CartProvider>
+    <CartContext.Provider value={contextValue}>
       <div className="min-h-screen bg-gray-100">
-        <Header
-          onOpenCart={() => {
-            // agora o CartSidebar pega o estado do contexto
-          }}
-        />
+        <Header onOpenCart={() => setCartOpen(true)} />
         <main className="flex-1 bg-gray-50 pt-4">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -32,15 +71,14 @@ function App() {
             <Route path="/sobre" element={<About />} />
             <Route path="/lojas" element={<Stores />} />
             <Route path="/contato" element={<Contact />} />
-            <Route path="/pagamento" element={<PaymentPage />} />
           </Routes>
         </main>
         <Footer />
-        {/* CartSidebar pode usar o CartContext por dentro */}
-        <CartSidebar />
+        <CartSidebar open={cartOpen} onClose={() => setCartOpen(false)} />
       </div>
-    </CartProvider>
+    </CartContext.Provider>
   );
+
 }
 
 export default App;
