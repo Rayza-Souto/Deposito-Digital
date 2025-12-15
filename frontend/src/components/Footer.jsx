@@ -38,25 +38,19 @@ function Footer() {
         </div>
         <div>
           <h4 className="mb-3 text-sm font-semibold uppercase text-gray-700">
-            Ajuda
-          </h4>
-          <ul className="space-y-1 text-xs text-gray-600">
-            <li>Política de privacidade</li>
-            <li>Política de troca e devolução</li>
-            <li>Termos de uso</li>
-          </ul>
-        </div>
-        <div>
-          <h4 className="mb-3 text-sm font-semibold uppercase text-gray-700">
-            Televendas
+            Compre pelo whatsapp
           </h4>
           <p className="text-xs text-gray-600">
-            Segunda a sábado: 7h às 21h.
+            Segunda a sexta: 8h às 18h
+          </p>
+          <p className="text-xs text-gray-600">
+            Sábado: 8h às 13h
           </p>
           <p className="mt-1 text-sm font-bold text-primary">
-            (11) 99999-0000
+            
+            (11) 97110-9010
           </p>
-          <p className="mt-2 text-xs text-gray-600">WhatsApp disponível.</p>
+          <p className="mt-1 text-xs text-gray-600">WhatsApp disponível.</p>
         </div>
       </div>
       <div className="bg-gray-100">

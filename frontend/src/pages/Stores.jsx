@@ -23,6 +23,15 @@ function Stores() {
           </p>
           <p className="text-xs text-gray-500">
             Sábado: 8h às 13h
+          </p><br></br>
+          <p className="text-xs text-gray-500">
+            <a
+              href="https://maps.app.goo.gl/rGmo1L2dR7RxJEtg9"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <b>Veja no Maps</b>
+            </a>
           </p>
         </div>
       </div>
