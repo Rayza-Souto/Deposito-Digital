@@ -12,6 +12,7 @@ function Header({ onOpenCart }) {
         <div className="flex items-center gap-2 text-gray-600">
           <Phone className="h-4 w-4 text-primary" />
           <span>Whatsapp: (11) 97110-9010</span>
+          <span>Telefone: (11) 5514-6617</span>
         </div>
         <div className="flex items-center gap-4 text-gray-600">
           <div className="flex items-center gap-1">

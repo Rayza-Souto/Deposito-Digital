@@ -47,7 +47,6 @@ function Footer() {
             Sábado: 8h às 13h
           </p>
           <p className="mt-1 text-sm font-bold text-primary">
-            
             (11) 97110-9010
           </p>
           <p className="mt-1 text-xs text-gray-600">WhatsApp disponível.</p>

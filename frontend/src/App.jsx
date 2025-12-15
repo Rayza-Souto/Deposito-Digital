@@ -10,6 +10,7 @@ import CartPage from './pages/CartPage.jsx';
 import About from './pages/About.jsx';
 import Stores from './pages/Stores.jsx';
 import Contact from './pages/Contact.jsx';
+import CheckoutPage from './pages/CheckoutPage.jsx';
 
 
 export const CartContext = React.createContext();
@@ -71,6 +72,7 @@ function App() {
             <Route path="/sobre" element={<About />} />
             <Route path="/lojas" element={<Stores />} />
             <Route path="/contato" element={<Contact />} />
+            <Route path="/checkout" element={<CheckoutPage />} />
           </Routes>
         </main>
         <Footer />

@@ -1,8 +1,11 @@
 import React, { useContext } from 'react';
 import { CartContext } from '../App.jsx';
 import Breadcrumb from '../components/Breadcrumb.jsx';
+import { useNavigate } from 'react-router-dom';
 
 function CartPage() {
+
+  const navigate = useNavigate();
   const { cartItems, updateQty, cartTotal } =
     useContext(CartContext);
 
@@ -88,7 +91,9 @@ function CartPage() {
                 R$ {cartTotal.toFixed(2)}
               </span>
             </div>
-            <button className="mt-4 w-full rounded bg-primary px-4 py-2 text-sm font-semibold text-white hover:bg-primaryDark">
+            <button
+              onClick={() => navigate('/checkout')}
+              className="mt-4 w-full rounded bg-primary px-4 py-2 text-sm font-semibold text-white hover:bg-primaryDark">
               Continuar para pagamento
             </button>
           </aside>

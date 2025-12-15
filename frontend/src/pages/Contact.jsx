@@ -17,6 +17,7 @@ function Contact() {
     e.preventDefault();
 
     const texto = `
+
 Nome: ${form.nome}
 E-mail: ${form.email}
 Telefone: ${form.telefone}
@@ -27,6 +28,14 @@ Mensagem: ${form.mensagem}
     const url = `https://wa.me/${telefoneEmpresa}?text=${encodeURIComponent(texto)}`;
 
     window.open(url, '_blank');
+
+    // limpar formulário
+    setForm({
+      nome: '',
+      email: '',
+      telefone: '',
+      mensagem: '',
+    });
   }
 
   return (
@@ -54,6 +63,7 @@ Mensagem: ${form.mensagem}
           <input
             name="nome"
             type="text"
+            value={form.nome}
             onChange={handleChange}
             className="w-full rounded border px-3 py-2 text-sm outline-none focus:border-primary focus:ring-1 focus:ring-primary"
           />
@@ -66,6 +76,7 @@ Mensagem: ${form.mensagem}
           <input
             name="email"
             type="email"
+            value={form.email}
             onChange={handleChange}
             className="w-full rounded border px-3 py-2 text-sm outline-none focus:border-primary focus:ring-1 focus:ring-primary"
           />
@@ -78,6 +89,7 @@ Mensagem: ${form.mensagem}
           <input
             name="telefone"
             type="tel"
+            value={form.telefone}
             onChange={handleChange}
             className="w-full rounded border px-3 py-2 text-sm outline-none focus:border-primary focus:ring-1 focus:ring-primary"
           />
@@ -90,6 +102,7 @@ Mensagem: ${form.mensagem}
           <textarea
             name="mensagem"
             rows="4"
+            value={form.mensagem}
             onChange={handleChange}
             className="w-full rounded border px-3 py-2 text-sm outline-none focus:border-primary focus:ring-1 focus:ring-primary"
           />
