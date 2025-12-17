@@ -25,7 +25,7 @@ function App() {
       if (existing) {
         return prev.map(item =>
           item.id === product.id
-            ? { ...item, qty: item.qty + qty }
+            ? { ...item, qty: item.qty + product.qty }
             : item
         );
       }

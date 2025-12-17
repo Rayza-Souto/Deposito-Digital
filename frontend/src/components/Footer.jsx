@@ -54,7 +54,7 @@ function Footer() {
       </div>
       <div className="bg-gray-100">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 text-[11px] text-gray-500">
-          <span>© {new Date().getFullYear()} Materiais para construção</span>
+          <span>© {new Date().getFullYear()} Rayza Souto - Todos os direitos reservados</span>
         </div>
       </div>
     </footer>

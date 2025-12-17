@@ -16,7 +16,7 @@ function CheckoutPage() {
     const [payment, setPayment] = useState('pix');
 
     // Frete
-    const originCep = '01001000'; // CEP interno (exemplo)
+    const originCep = '04914120'; // CEP interno 
     const [destCep, setDestCep] = useState('');
     const freight = destCep ? 15 : 0; // frete fixo por enquanto
 
@@ -192,7 +192,7 @@ Pagamento: ${payment}
                         : 'bg-primary hover:bg-primaryDark'
                     }`}
             >
-                Enviar pedido
+                Enviar Pedido pelo Whatsapp
             </button>
 
             <button

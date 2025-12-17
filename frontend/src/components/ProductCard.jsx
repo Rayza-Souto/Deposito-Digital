@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../App.jsx';
+import { IconBrandWhatsapp } from "@tabler/icons-react";
 
 function ProductCard({ product }) {
   const { addToCart } = useContext(CartContext);
@@ -37,9 +38,10 @@ function ProductCard({ product }) {
         </div>
         <button
           onClick={() => addToCart(product)}
-          className="mt-4 rounded bg-primary px-3 py-2 text-sm font-semibold text-white hover:bg-primaryDark"
+          className="mt-4 flex items-center justify-center gap-2 rounded bg-primary px-3 py-2 text-sm font-semibold text-white hover:bg-primaryDark"
         >
-          Adicionar ao carrinho
+          <IconBrandWhatsapp className="h-4 w-4 text-white" />
+          <span>Pedir pelo Whatsapp</span>
         </button>
       </div>
     </div>

@@ -94,7 +94,7 @@ function CartPage() {
             <button
               onClick={() => navigate('/checkout')}
               className="mt-4 w-full rounded bg-primary px-4 py-2 text-sm font-semibold text-white hover:bg-primaryDark">
-              Continuar para pagamento
+              Calcular Frete e Enviar para o Whatsapp
             </button>
           </aside>
         </div>
